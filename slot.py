@@ -69,7 +69,6 @@ def get_slots(pin, age):
 	ele.click()
 
 	time.sleep(2)
-	#age = browser.find_element(By.PARTIAL_LINK_TEXT, 'Age 18+')
 	ele = browser.find_elements_by_tag_name("label")
 	for e in ele:
 		if e.text == age:
@@ -79,15 +78,16 @@ def get_slots(pin, age):
 	time.sleep(1)
 	isAvailable(pin)
 	pinCode_box.clear()
+init_browser()
 #%%
 
-init_browser()
+browser.get('https://www.cowin.gov.in/')   # Cowin website
 
-browser.get('https://www.cowin.gov.in/')
+pin_codes = [ "<Enter you pin codes>" ]    # Example : ['678001', '678020']
 
-pin_codes = ['800001', '800020']
-age = 18
+age = 18   				   # Desired age group
 
+#%%
 while(1):
 	print("==== Checking for slots ====")
 	for pin in pin_codes:
