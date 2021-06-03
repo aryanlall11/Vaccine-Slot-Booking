@@ -86,12 +86,13 @@ init_browser()
 browser.get('https://www.cowin.gov.in/')
 
 pin_codes = ['800001', '800020']
+age = 18
 
 while(1):
 	print("==== Checking for slots ====")
 	for pin in pin_codes:
-		get_slots(pin, 18)
+		get_slots(pin, age)
 	browser.get('https://www.cowin.gov.in/')
-	time.sleep(300)
+	time.sleep(300)     # Check after every 5 minutes (300 secs)
 
 server.quit()
