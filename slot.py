@@ -6,7 +6,7 @@ import time
 import smtplib
 
 server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-server.login("suchitralall8@gmail.com", "9775070197")
+server.login(<your gmail id>, <password>)    # Enter your account details to allow the bot to send notification emails via this account
 
 def init_browser():
 	global browser
