@@ -7,6 +7,7 @@ import smtplib
 
 server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
 server.login(<your gmail id>, <password>)    # Enter your account details to allow the bot to send notification emails via this account
+receiver_ids = [ <receiver id(s)> ]          # Enter the email id to which you wish to send the notification. Ex : ["xyz@gmail.com", "abc@gmail.com"]
 
 def init_browser():
 	global browser
@@ -31,7 +32,7 @@ def init_browser():
 	browser = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
 
 def send_mail(pin):
-	server.sendmail("suchitralall8@gmail.com", ["aryanlall53@gmail.com", "lallbimal@gmail.com"], "There is a slot for booking vaccine at pincode " + str(pin) + ". Please visit quickly!")
+	server.sendmail( <your gmail id> , receiver_ids, "There is a slot for booking vaccine at pincode " + str(pin) + ". Please visit quickly!")   # Enter your details
 	print("Email sent!")
 
 def isAvailable(pin):
@@ -81,18 +82,19 @@ def get_slots(pin, age):
 init_browser()
 #%%
 
-browser.get('https://www.cowin.gov.in/')   # Cowin website
+cowin_website = 'https://www.cowin.gov.in/'   # Cowin website  
 
-pin_codes = [ "<Enter you pin codes>" ]    # Example : ['678001', '678020']
+pin_codes = [ "<Enter you pin codes>" ]       # Example : ['678001', '678020']
 
-age = 18   				   # Desired age group
+age = 18   				      # Desired age group
 
 #%%
+browser.get(cowin_website)
 while(1):
 	print("==== Checking for slots ====")
 	for pin in pin_codes:
 		get_slots(pin, age)
-	browser.get('https://www.cowin.gov.in/')
+	browser.get(cowin_website)
 	time.sleep(300)     # Check after every 5 minutes (300 secs)
 
 server.quit()
